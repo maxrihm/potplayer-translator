@@ -1,0 +1,39 @@
+﻿<Window KeyDown="MainWindow_OnKeyDown"
+        x:Class="WpfApp2.MainWindow"
+        Closing="Window_Closing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:WpfApp2"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        mc:Ignorable="d"
+        ShowActivated="True"
+        AllowsTransparency="True" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="900" Width="1200">
+    <Window.Resources>
+        <System:Double x:Key="elementsOpacity">0.8</System:Double>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="297*"/>
+        </Grid.ColumnDefinitions>
+
+        <cefSharp:ChromiumWebBrowser Opacity="{StaticResource elementsOpacity}"  x:Name="browser_window" Margin="22,132,47,59" Grid.ColumnSpan="2"></cefSharp:ChromiumWebBrowser>
+        <Button Content="Add" Opacity="{StaticResource elementsOpacity}" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox Background="#02000000" x:Name="textbox_word" HorizontalAlignment="Left" Margin="64,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" Foreground="#FFFF7500" BorderBrush="#02ABADB3"/>
+        <TextBox Background="#02000000"  x:Name="textbox_context_src" HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="780" Grid.ColumnSpan="2" BorderBrush="#02ABADB3" Foreground="#FF1D7DE8"/>
+        <TextBox Background="#02000000" x:Name="textbox_context_trs" HorizontalAlignment="Left" Margin="10,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="780" Grid.ColumnSpan="2" BorderBrush="#02ABADB3" Foreground="#FF1D7DE8"/>
+        <Button Content="C" Opacity="{StaticResource elementsOpacity}" HorizontalAlignment="Left" Margin="240,8,0,0" VerticalAlignment="Top" Click="Button2_Click"/>
+        <TextBox Background="#02000000" x:Name="textbox_translation" HorizontalAlignment="Left" Margin="256,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" Foreground="#FFFF7500" BorderBrush="#02ABADB3" Grid.ColumnSpan="2"/>
+
+    </Grid>
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="White"/>
+    </Window.Background>
+
+</Window>
