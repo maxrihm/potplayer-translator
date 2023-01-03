@@ -165,6 +165,22 @@ namespace WpfApp2
             clearClipboard();
         }
 
+        public async void SrcContextTextbox()
+        {
+            var item = Clipboard.GetContent();
+            string data = await item.GetTextAsync();
+            textbox_context_src.Text = data;
+            clearClipboard();
+        }
+
+        public async void TrsContextTextbox()
+        {
+            var item = Clipboard.GetContent();
+            string data = await item.GetTextAsync();
+            textbox_context_trs.Text = data;
+            clearClipboard();
+        }
+
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F4)
@@ -186,6 +202,14 @@ namespace WpfApp2
             if (e.Key == Key.F9)
             {
                 translationTextbox();
+            }
+            if (e.Key == Key.F10)
+            {
+                SrcContextTextbox();
+            }
+            if (e.Key == Key.F11)
+            {
+                TrsContextTextbox();
             }
         }
 
