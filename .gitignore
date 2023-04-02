@@ -3,3 +3,4 @@ debug
 obj
 MigrationBackup
 .vs
+Translator.csproj.user
