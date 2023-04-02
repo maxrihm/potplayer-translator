@@ -41,17 +41,17 @@ namespace WpfApp2
             settings.CachePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\CEF";
             CefSharp.Cef.Initialize(settings);
             InitializeComponent();
+            string url = $"https://translate.yandex.com/?source_lang=en&target_lang=ru&text=";
+            browser_window.Load(url);
             //ProcessStartInfo info = new ProcessStartInfo("C:\\Users\\Drogen\\OneDrive\\WpfApp2\\script.ahk");
             //info.UseShellExecute = true;
             //info.Verb = "runas";
             //Process.Start(info);
-
-
             //this.ShowInTaskbar=true;
 
         }
 
-        public async void favourite()
+        public async void Favourite()
         {
             var items = await Clipboard.GetHistoryItemsAsync();
             int cnt = 0;
@@ -71,7 +71,7 @@ namespace WpfApp2
      
             }
 
-            clearClipboard();
+            ClearClipboard();
         }
 
 
@@ -83,20 +83,20 @@ namespace WpfApp2
 
         }
 
-        public async void wordTranslate()
+        public async void WordTranslate()
         {
             var item = Clipboard.GetContent();
             string data = await item.GetTextAsync();
             textbox_word.Text = data;
-            string url = $"https://translate.yandex.ru/?source_lang=en&target_lang=ru&text={data}";
+            string url = $"https://translate.google.com/?hl=en&tab=TT&sl=en&tl=ru&text={data}&op=translate";
             browser_window.Load(url);
-            clearClipboard();
+            ClearClipboard();
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            writeToSpreadsheet();
+            WriteToSpreadsheet();
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
@@ -104,7 +104,7 @@ namespace WpfApp2
             ClearTextboxes();
         }
 
-        public void writeToSpreadsheet()
+        public void WriteToSpreadsheet()
         {
             this.WindowState = (WindowState)FormWindowState.Minimized;
             Excel.Application excelApplication = new Excel.Application();
@@ -134,7 +134,7 @@ namespace WpfApp2
             textbox_context_trs.Text = "";
         }
 
-        public void clearClipboard()
+        public void ClearClipboard()
         {
             Clipboard.ClearHistory();
             Clipboard.Clear();
@@ -149,20 +149,20 @@ namespace WpfApp2
             }
         }
 
-        public async void wordTextbox()
+        public async void WordTextbox()
         {
             var item = Clipboard.GetContent();
             string data = await item.GetTextAsync();
             textbox_word.Text = data;
-            clearClipboard();
+            ClearClipboard();
         }
         
-        public async void translationTextbox()
+        public async void TranslationTextbox()
         {
             var item = Clipboard.GetContent();
             string data = await item.GetTextAsync();
             textbox_translation.Text = data;
-            clearClipboard();
+            ClearClipboard();
         }
 
         public async void SrcContextTextbox()
@@ -170,7 +170,7 @@ namespace WpfApp2
             var item = Clipboard.GetContent();
             string data = await item.GetTextAsync();
             textbox_context_src.Text = data;
-            clearClipboard();
+            ClearClipboard();
         }
 
         public async void TrsContextTextbox()
@@ -178,41 +178,53 @@ namespace WpfApp2
             var item = Clipboard.GetContent();
             string data = await item.GetTextAsync();
             textbox_context_trs.Text = data;
-            clearClipboard();
+            ClearClipboard();
         }
 
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F4)
             {
-                wordTranslate();
+                WordTranslate();
             }            
             if (e.Key == Key.F5)
             {
-                favourite();
+                Favourite();
             }
             if (e.Key == Key.F6)
             {
-                writeToSpreadsheet();
+                WriteToSpreadsheet();
+            }
+            if (e.Key == Key.F7)
+            {
+                WholeSentenceTranslate();
             }
             if (e.Key == Key.F8)
             {
-                wordTextbox();
+                WordTextbox();
             }
             if (e.Key == Key.F9)
             {
-                translationTextbox();
+                TranslationTextbox();
             }
-            if (e.Key == Key.F10)
+            if (e.Key == Key.F1)
             {
                 SrcContextTextbox();
             }
-            if (e.Key == Key.F11)
+            if (e.Key == Key.F2)
             {
                 TrsContextTextbox();
             }
         }
 
+        public async void WholeSentenceTranslate()
+        {
+            var item = Clipboard.GetContent();
+            string data = await item.GetTextAsync();
+            string url = $"https://translate.google.com/?hl=en&tab=TT&sl=en&tl=ru&text={data}&op=translate";
+            browser_window.Load(url);
+            ClearClipboard();
+        }
     }
 
 

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "f8137115-a46f-438b-8374-eb2f45ca2cc4": {
+      "ProjectGuid": "f8137115-a46f-438b-8374-eb2f45ca2cc4",
+      "DisplayName": "Translator",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
