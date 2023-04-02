@@ -19,7 +19,7 @@ The program creates a table that looks like this:
 6. Click the "Add" button or use the hotkey to add the translation to the Excel file.
 
 ### How it works
-The program uses the CefSharp library to embed a Chromium browser in the program's window. When you select text, the program copies it to the clipboard and sends it to the embedded browser, which uses Yandex.Translate to get the translation. The program then displays the translation in the appropriate textbox. When you press the hotkey, the program sends the selected text to Google Translate and displays the machine translation in the appropriate textbox.
+The program uses the CefSharp library to embed a Chromium browser in the program's window. When you select text, the program copies it to the clipboard and sends it to the embedded browser, which uses Yandex.Translate to get the translation. The program then displays the translation in the appropriate textbox. When you press the hotkey, the program sends the selected text to the translation service and displays the machine translation in the appropriate textbox.
 
 The program uses the Microsoft Office Interop library to write to the Excel file.
 
